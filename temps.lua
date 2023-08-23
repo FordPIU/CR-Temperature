@@ -115,6 +115,7 @@ local function GetTextForTemperature(temperature)
     if temperature < 33 then
         return " - Cold Advisory"
     end
+    return ""
 end
 
 local function DrawTemp(temp)
