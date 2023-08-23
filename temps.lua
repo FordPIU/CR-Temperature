@@ -85,7 +85,7 @@ local function CalculateTemperature(time, month, weather)
     local weatherModifier = weatherModifiers[weather] or 0
     local temperature = baseTemperature + weatherModifier + Temperature_Offset
 
-    Temperature_Offset = Temperature_Offset + GetRandomFloatInRange(-0.5, 0.5)
+    Temperature_Offset = Temperature_Offset + GetRandomFloatInRange(-0.1, 0.1)
 
     return RoundToDecimal(temperature, 1)
 end
