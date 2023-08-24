@@ -9,6 +9,7 @@ local retMonth = nil
 RegisterNetEvent("retWorldMonth", function(month)
     retMonth = month
 end)
+
 local function getCurrentMonth()
     TriggerServerEvent("getWorldMonth")
 
@@ -85,8 +86,6 @@ local function CalculateTemperature(time, month, weather)
     local weatherModifier = weatherModifiers[weather] or 0
     local temperature = baseTemperature + weatherModifier + Temperature_Offset
 
-    Temperature_Offset = Temperature_Offset + GetRandomFloatInRange(-0.1, 0.1)
-
     return RoundToDecimal(temperature, 1)
 end
 
@@ -154,4 +153,8 @@ Citizen.CreateThread(function()
         Wait(0)
         DrawTemp(Temperature)
     end
+end)
+
+RegisterNetEvent("sendTemperatureOffset", function(tempOffset)
+    Temperature_Offset = tempOffset
 end)
